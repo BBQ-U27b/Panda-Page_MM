@@ -6,8 +6,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <img src="dancin_panda.gif" alt="Dancin' Panda">
+    <img src="images/dancin_panda.gif" alt="Dancin' Panda" class="full-screen">
+    <div class="sound-buttons">
+        <button class="sound-button" id="mute-button" onclick="muteAudio()">
+            <img src="images/volume_off.png" alt="Mute">
+        </button>
+        <button class="sound-button" id="unmute-button" onclick="unmuteAudio()" style="display: none;">
+            <img src="images/volume_on.png" alt="Unmute">
+        </button>
     </div>
+
+    <audio id="background-audio" loop autoplay>
+        <source src="audio/panda_bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element. // is dat nötig?
+    </audio>
+
+    <script>
+        const audio = document.getElementById('background-audio');
+        const muteButton = document.getElementById('mute-button');
+        const unmuteButton = document.getElementById('unmute-button');
+
+        function muteAudio() {
+            audio.muted = true;
+            muteButton.style.display = 'none';
+            unmuteButton.style.display = 'block';
+        }
+
+        function unmuteAudio() {
+            audio.muted = false;
+            unmuteButton.style.display = 'none';
+            muteButton.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
